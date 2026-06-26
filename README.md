@@ -21,7 +21,9 @@
 
 ## 📸 Ekran Görüntüleri
 
-*Yakında eklenecek.*
+<p align="center">
+  <img src="New.png" width="800" alt="Tuzluca Bar Yeni Ekran Görüntüsü">
+</p>
 
 ## ✨ Öne Çıkan Özellikler
 
