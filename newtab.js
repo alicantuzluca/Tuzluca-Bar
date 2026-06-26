@@ -15,7 +15,7 @@ const I18N = {
     edit:'Düzenle', settings_title:'Ayarlar', lang_label:'Dil', edit_layout:'Yerleşimi Düzenle', done:'Bitti',
     engine_label:'Arama Motoru', weather_label:'Hava Durumu Şehri',
     cards_label:'Kartlar', city_ph:'Şehir giriniz...', save:'Kaydet',
-    card_clock:'Saat', card_weather:'Hava Durumu', card_search:'Arama',
+    card_motivation:'Motivasyon', card_greeting:'Karşılama', card_clock:'Saat', card_weather:'Hava Durumu', card_search:'Arama',
     card_links:'Hızlı Linkler', card_notes:'Notlar', card_todo:'Yapılacaklar',
     card_calendar:'Takvim', card_exchange:'Döviz Kurları',
     card_pomodoro:'Pomodoro', card_worldclock:'Dünya Saatleri',
@@ -24,6 +24,9 @@ const I18N = {
     loading:'Yükleniyor...', w_error:'Şehir bulunamadı.',
     feels:'Hissedilen', humidity:'Nem', wind:'Rüzgar',
     add_link:'Link Ekle', link_name:'Link ismi:', link_url:'URL:', usd:'1 USD =',
+    card_qr:'QR Oluşturucu', qr_desc:'İstediğiniz bir bağlantıyı veya metni, taratılması kolay ve yüksek çözünürlüklü bir QR koda dönüştürün.',
+    qr_ph:'Örn: https://github.com/alicantuzluca', qr_btn:'QR Oluştur', qr_preview:'Önizleme burada belirecek',
+    export_data:'Verileri Dışa Aktar', import_data:'İçe Aktar',
   },
   en: {
     name:'English', flag:'🇬🇧', dir:'ltr',
@@ -33,7 +36,7 @@ const I18N = {
     edit:'Customize', settings_title:'Settings', lang_label:'Language', edit_layout:'Edit Layout', done:'Done',
     engine_label:'Search Engine', weather_label:'Weather City',
     cards_label:'Cards', city_ph:'Enter city...', save:'Save',
-    card_clock:'Clock', card_weather:'Weather', card_search:'Search',
+    card_motivation:'Motivation', card_greeting:'Greeting', card_clock:'Clock', card_weather:'Weather', card_search:'Search',
     card_links:'Quick Links', card_notes:'Notes', card_todo:'To-Do',
     card_calendar:'Calendar', card_exchange:'Exchange Rates',
     card_pomodoro:'Pomodoro', card_worldclock:'World Clock',
@@ -42,6 +45,9 @@ const I18N = {
     loading:'Loading...', w_error:'City not found.',
     feels:'Feels like', humidity:'Humidity', wind:'Wind',
     add_link:'Add Link', link_name:'Link name:', link_url:'URL:', usd:'1 USD =',
+    card_qr:'QR Generator', qr_desc:'Convert any link or text into an easily scannable, high-resolution QR code.',
+    qr_ph:'e.g. https://github.com/alicantuzluca', qr_btn:'Generate QR', qr_preview:'Preview will appear here',
+    export_data:'Export Data', import_data:'Import Data',
   },
   de: {
     name:'Deutsch', flag:'🇩🇪', dir:'ltr',
@@ -202,12 +208,16 @@ const I_CALENDAR = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" s
 const I_EXCHANGE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`;
 const I_POMO = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="8"/><path d="M12 2v4"/><path d="M10 2h4"/><path d="m17.6 8.4-1.4-1.4"/></svg>`;
 const I_WORLD = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+const I_QR = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M9 14v1c0 .6-.4 1-1 1H7"/><path d="M15 9h1c.6 0 1 .4 1 1v1"/><path d="M15 15h2v2h-2z"/></svg>`;
 
 const I_GOOGLE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.945 11a9 9 0 1 1-3.284-5.997l-2.655 2.592a5.5 5.5 0 1 0 1.583 4.238H12v3.666h8.945Z"/></svg>`;
 const I_BING = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3l-4 4v10.5l4-1.5V3z"/><path d="M9 3v13.5l10.5 4.5v-10.5L9 3z"/></svg>`;
 const I_SHIELD = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`;
+const I_QUOTE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1.5 1.5 1.5 2.5 0 2-1.5 4.5-2.5 4.5h-.5M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.5c0 2-1.5 4.5-2.5 4.5H14"/></svg>`;
 
 const CARD_DEFS = [
+  {id:'motivation', icon:I_QUOTE, key:'card_motivation',wide:true,  on:true},
+  {id:'greeting',   icon:I_CLOCK, key:'card_greeting',  wide:true,  on:true},
   {id:'clock',      icon:I_CLOCK, key:'card_clock',     wide:false, on:true},
   {id:'weather',    icon:I_WEATHER, key:'card_weather',   wide:false, on:true},
   {id:'search',     icon:I_SEARCH, key:'card_search',    wide:true,  on:true},
@@ -218,7 +228,63 @@ const CARD_DEFS = [
   {id:'exchange',   icon:I_EXCHANGE, key:'card_exchange',  wide:false, on:false},
   {id:'pomodoro',   icon:I_POMO, key:'card_pomodoro',  wide:false, on:false},
   {id:'worldclock', icon:I_WORLD, key:'card_worldclock',wide:true,  on:false},
+  {id:'qr',         icon:I_QR, key:'card_qr',          wide:true,  on:false},
 ];
+
+const QUOTES = {
+  tr: [
+    {q:"Başlamak için mükemmel olmayı beklemeyin.", a:"Zig Ziglar"},
+    {q:"Hayal edebiliyorsan, yapabilirsin.", a:"Walt Disney"},
+    {q:"Gelecek, bugünden hazırlananlara aittir.", a:"Malcolm X"},
+    {q:"Her şeyin bir güzelliği vardır ama herkes göremez.", a:"Konfüçyüs"},
+    {q:"Asla pes etmeyen birini yenmek zordur.", a:"Babe Ruth"},
+    {q:"Ne kadar yavaş gittiğin önemli değil, yeter ki durma.", a:"Konfüçyüs"},
+    {q:"Zorluklar, sıradan insanları sıra dışı bir kadere hazırlar.", a:"C.S. Lewis"},
+    {q:"Başarı, küçük çabaların her gün tekrarlanmasıdır.", a:"Robert Collier"},
+    {q:"Karanlığa küfredeceğine bir mum yak.", a:"Konfüçyüs"},
+    {q:"Fırsatlar şans eseri olmaz, siz yaratırsınız.", a:"Chris Grosser"},
+    {q:"Yüzünü güneşe dön, gölgeler hep arkanda kalsın.", a:"Walt Whitman"},
+    {q:"Başarısızlık, daha zekice başlama fırsatıdır.", a:"Henry Ford"},
+    {q:"Dünyada görmek istediğin değişimin kendisi ol.", a:"Mahatma Gandhi"},
+    {q:"Başarı son değildir, başarısızlık ölümcül değildir.", a:"Winston Churchill"},
+    {q:"Dün zekiydim, dünyayı değiştirmek istedim. Bugün bilgeyim, kendimi değiştiriyorum.", a:"Mevlânâ"},
+    {q:"İmkansızla mümkün arasındaki fark, kararlılıktadır.", a:"Tommy Lasorda"},
+    {q:"Hayat, fırtınanın geçmesini beklemek değil, yağmurda dans etmeyi öğrenmektir.", a:"Vivian Greene"},
+    {q:"Yarını gerçekleştirmenin önündeki tek engel, bugünkü şüphelerimizdir.", a:"Franklin D. Roosevelt"},
+    {q:"Senin izin vermediğin sürece kimse sana kendini değersiz hissettiremez.", a:"Eleanor Roosevelt"},
+    {q:"Her vurduğum top beni bir sonraki hedefe yaklaştırır.", a:"Babe Ruth"},
+    {q:"Başlamak, işin yarısıdır.", a:"Platon"},
+    {q:"Kendine inan. Hedeflerine odaklan.", a:"Anonim"},
+    {q:"Başarı hazırlığa bağlıdır.", a:"Konfüçyüs"},
+    {q:"Nerede olursan ol, elindekilerle yapabileceğini yap.", a:"Theodore Roosevelt"}
+  ],
+  en: [
+    {q:"Don't wait for things to be perfect before you start.", a:"Zig Ziglar"},
+    {q:"If you can dream it, you can do it.", a:"Walt Disney"},
+    {q:"The future belongs to those who prepare for it today.", a:"Malcolm X"},
+    {q:"Everything has beauty, but not everyone sees it.", a:"Confucius"},
+    {q:"It's hard to beat a person who never gives up.", a:"Babe Ruth"},
+    {q:"It does not matter how slowly you go as long as you do not stop.", a:"Confucius"},
+    {q:"Hardships often prepare ordinary people for an extraordinary destiny.", a:"C.S. Lewis"},
+    {q:"Success is the sum of small efforts, repeated day-in and day-out.", a:"Robert Collier"},
+    {q:"It is better to light one small candle than to curse the darkness.", a:"Confucius"},
+    {q:"Opportunities don't happen. You create them.", a:"Chris Grosser"},
+    {q:"Keep your face always toward the sunshine—and shadows will fall behind you.", a:"Walt Whitman"},
+    {q:"Failure is simply the opportunity to begin again, this time more intelligently.", a:"Henry Ford"},
+    {q:"Be the change that you wish to see in the world.", a:"Mahatma Gandhi"},
+    {q:"Success is not final, failure is not fatal.", a:"Winston Churchill"},
+    {q:"Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself.", a:"Rumi"},
+    {q:"The difference between the impossible and the possible lies in a person's determination.", a:"Tommy Lasorda"},
+    {q:"Life isn't about waiting for the storm to pass, it's about learning to dance in the rain.", a:"Vivian Greene"},
+    {q:"The only limit to our realization of tomorrow will be our doubts of today.", a:"Franklin D. Roosevelt"},
+    {q:"No one can make you feel inferior without your consent.", a:"Eleanor Roosevelt"},
+    {q:"Every strike brings me closer to the next home run.", a:"Babe Ruth"},
+    {q:"The beginning is the most important part of the work.", a:"Plato"},
+    {q:"Believe in yourself. Focus on your goals.", a:"Anonymous"},
+    {q:"Success depends upon previous preparation.", a:"Confucius"},
+    {q:"Do what you can, with what you have, where you are.", a:"Theodore Roosevelt"}
+  ]
+};
 
 const ENGINES = {
   google:     {name:'Google',     icon:I_GOOGLE, url:'https://google.com/search?q='},
@@ -277,6 +343,7 @@ const S = {
     {city:'Tokyo',    tz:'Asia/Tokyo',       flag:'🇯🇵'},
     {city:'Dubai',    tz:'Asia/Dubai',       flag:'🇦🇪'},
   ],
+  motFont: 'Dancing Script',
 };
 
 // ───────────────────────────────────────────────────
@@ -292,6 +359,7 @@ function loadState() {
       if (data.notes !== undefined) S.notes = data.notes;
       if (data.todos !== undefined) S.todos = data.todos;
       if (data.links !== undefined) S.links = data.links;
+      if (data.motFont) S.motFont = data.motFont;
       
       if (data.positions) S.positions = data.positions;
       else if (data.cardOrder) {
@@ -317,7 +385,7 @@ function loadState() {
 }
 
 function save() {
-  const d = {lang:S.lang, engine:S.engine, city:S.city, cards:S.cards, notes:S.notes, todos:S.todos, links:S.links, positions:S.positions};
+  const d = {lang:S.lang, engine:S.engine, city:S.city, cards:S.cards, notes:S.notes, todos:S.todos, links:S.links, positions:S.positions, motFont:S.motFont};
   if (typeof chrome !== 'undefined' && chrome.storage) chrome.storage.local.set(d);
   else localStorage.setItem('nb', JSON.stringify(d));
 }
@@ -359,6 +427,14 @@ function tick() {
     const el = $(`wct-${i}`);
     if (el) el.textContent = now.toLocaleTimeString('en-US',{timeZone:z.tz,hour12:false,hour:'2-digit',minute:'2-digit'});
   });
+
+  const langCode = I18N[S.lang] ? S.lang : 'en';
+  const qs = QUOTES[langCode] || QUOTES.en;
+  if (qs && qs.length) {
+    const quote = qs[now.getHours() % qs.length];
+    setText('m-quote', `"${quote.q}"`);
+    setText('m-author', `— ${quote.a}`);
+  }
 }
 
 // ───────────────────────────────────────────────────
@@ -548,7 +624,54 @@ function rWorldclock() {
   }).join('')}</div>`;
 }
 
-const RENDERERS = {clock:rClock,weather:rWeather,search:rSearch,links:rLinks,notes:rNotes,todo:rTodo,calendar:rCalendar,exchange:rExchange,pomodoro:rPomodoro,worldclock:rWorldclock};
+function rQR() {
+  return `
+    <div class="qr-container">
+      <div class="qr-left">
+        <p class="qr-desc">${t('qr_desc')}</p>
+        <div class="qr-input-row">
+          <span class="qr-input-icon">🔗</span>
+          <input type="text" class="qr-input" id="qr-input" placeholder="${t('qr_ph')}">
+        </div>
+        <button class="qr-btn" data-action="generate-qr">
+          ${I_QR} <span class="qr-btn-text">${t('qr_btn')}</span>
+        </button>
+      </div>
+      <div class="qr-right">
+        <div class="qr-preview-box" id="qr-preview-container">
+          <div class="qr-placeholder">
+            ${I_QR}
+            <span>${t('qr_preview')}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function rGreeting() {
+  return `
+    <div class="hero-content">
+      <h1 class="greeting" id="greeting">${greeting()}</h1>
+      <div class="hero-time">
+        <span class="current-time" id="current-time">00:00:00</span>
+        <span class="hero-sep">·</span>
+        <span class="current-date" id="current-date"></span>
+      </div>
+    </div>
+  `;
+}
+
+function rMotivation() {
+  return `
+    <div class="motivation-content">
+      <p class="m-quote" id="m-quote" style="font-family: '${S.motFont}', serif;"></p>
+      <p class="m-author" id="m-author"></p>
+    </div>
+  `;
+}
+
+const RENDERERS = {motivation:rMotivation,greeting:rGreeting,clock:rClock,weather:rWeather,search:rSearch,links:rLinks,notes:rNotes,todo:rTodo,calendar:rCalendar,exchange:rExchange,pomodoro:rPomodoro,worldclock:rWorldclock,qr:rQR};
 
 // ───────────────────────────────────────────────────
 // CARD MANAGER
@@ -558,7 +681,9 @@ function renderCards() {
   const activeCards = CARD_DEFS.filter(c => S.cards[c.id]);
   
   container.innerHTML = activeCards.map((c, i) => {
-    const pos = S.positions[c.id] || {left: 20, top: 20};
+    const defaultLeft = c.id === 'greeting' ? Math.max(20, window.innerWidth/2 - 250) : 20;
+    const defaultTop = c.id === 'greeting' ? 80 : 20;
+    const pos = S.positions[c.id] || {left: defaultLeft, top: defaultTop};
     return `<div class="card${c.wide?' card-wide':''}" id="card-${c.id}" data-id="${c.id}" style="left: ${pos.left}px; top: ${pos.top}px;">
       <div class="card-header"><span class="card-icon">${c.icon}</span><span class="card-title">${t(c.key)}</span></div>
       <div class="card-body" id="body-${c.id}">${RENDERERS[c.id]?.()??''}</div>
@@ -614,6 +739,7 @@ function renderCards() {
   bindCardInputs();
   if (S.cards.weather) loadWeather();
   if (S.cards.exchange) loadExchange();
+  setTimeout(tick, 0);
 }
 
 function refreshBody(id) {
@@ -674,6 +800,7 @@ document.addEventListener('click', e=>{
     case 'next-month':   changeMonth(1); break;
     case 'toggle-pomo':  togglePomo(); break;
     case 'reset-pomo':   resetPomo(); break;
+    case 'generate-qr':  generateQR(); break;
   }
 });
 
@@ -755,6 +882,14 @@ function updatePomo() {
   if (fill) fill.style.strokeDashoffset = String(2*Math.PI*36*(1-(p.total-p.left)/p.total));
 }
 
+function generateQR() {
+  const i = document.getElementById('qr-input');
+  const text = i ? i.value.trim() : '';
+  const p = document.getElementById('qr-preview-container');
+  if (!text || !p) return;
+  p.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(text)}&margin=1" class="qr-result-img" alt="QR Code">`;
+}
+
 // ───────────────────────────────────────────────────
 // SETTINGS
 // ───────────────────────────────────────────────────
@@ -797,16 +932,28 @@ function renderSettings() {
   const cl=$('cards-list');
   if (cl) {
     cl.innerHTML=CARD_DEFS.map(c=>`
-      <div class="card-toggle-item">
-        <div class="card-toggle-info"><span>${c.icon}</span><span class="card-toggle-name">${t(c.key)}</span></div>
-        <label class="toggle-switch">
-          <input type="checkbox" data-card="${c.id}" ${S.cards[c.id]?'checked':''}>
-          <span class="toggle-thumb"></span>
-        </label>
+      <div class="card-toggle-item" style="flex-wrap:wrap;">
+        <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+          <div class="card-toggle-info"><span>${c.icon}</span><span class="card-toggle-name">${t(c.key)}</span></div>
+          <label class="toggle-switch">
+            <input type="checkbox" data-card="${c.id}" ${S.cards[c.id]?'checked':''}>
+            <span class="toggle-thumb"></span>
+          </label>
+        </div>
+        ${c.id === 'motivation' ? `
+        <div style="width:100%; display:flex; gap:10px; margin-top:10px;">
+          <select id="mot-font-select" class="settings-input" style="padding:4px 8px; font-size:.85rem; height:auto;">
+            ${['Dancing Script','Cormorant Garamond','Caveat','Pacifico','Great Vibes','Satisfy','Sacramento','Parisienne','Courgette','Yellowtail','Roboto','Open Sans','Montserrat','Lato','Poppins','Raleway'].map(f=>
+              `<option value="${f}" style="font-family:'${f}';" ${S.motFont===f?'selected':''}>${f}</option>`
+            ).join('')}
+          </select>
+        </div>` : ''}
       </div>`).join('');
     cl.querySelectorAll('input[type="checkbox"]').forEach(cb=>{
       cb.addEventListener('change', ()=>{ S.cards[cb.dataset.card]=cb.checked; save(); renderCards(); });
     });
+    const motFontSel = $('mot-font-select');
+    if(motFontSel) motFontSel.addEventListener('change', e=>{ S.motFont=e.target.value; save(); renderCards(); });
   }
 
   // Language option click — settings-local delegation
@@ -815,6 +962,51 @@ function renderSettings() {
       el.addEventListener('click', ()=> setLang(el.dataset.lang));
     });
   }
+
+  // Backup UI
+  const pBody = document.querySelector('.settings-body');
+  if (pBody && !$('settings-backup-section')) {
+    const bSec = document.createElement('div');
+    bSec.id = 'settings-backup-section';
+    bSec.className = 'backup-section';
+    bSec.innerHTML = `
+      <button class="backup-btn" id="export-btn"></button>
+      <button class="backup-btn" id="import-btn"></button>
+      <input type="file" id="import-file" accept=".json" style="display:none">
+    `;
+    pBody.appendChild(bSec);
+
+    $('export-btn').addEventListener('click', () => {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(S));
+      const el = document.createElement('a');
+      el.setAttribute("href", dataStr);
+      el.setAttribute("download", "tuzlucabar-backup.json");
+      document.body.appendChild(el);
+      el.click();
+      el.remove();
+    });
+
+    $('import-btn').addEventListener('click', () => $('import-file').click());
+    $('import-file').addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        try {
+          const imported = JSON.parse(ev.target.result);
+          Object.assign(S, imported);
+          save();
+          location.reload();
+        } catch (err) {
+          console.error("Import failed", err);
+          alert("Geçersiz yedekleme dosyası! / Invalid backup file!");
+        }
+      };
+      reader.readAsText(file);
+    });
+  }
+  if ($('export-btn')) $('export-btn').innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg> ${t('export_data')||'Dışa Aktar'}`;
+  if ($('import-btn')) $('import-btn').innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg> ${t('import_data')||'İçe Aktar'}`;
 }
 
 function setLang(code) {

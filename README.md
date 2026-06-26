@@ -21,15 +21,15 @@
 
 ## 📸 Ekran Görüntüleri
 
-<p align="center">
-  <img src="s1.png" width="800" alt="Tuzluca Bar Ekran Görüntüsü">
-</p>
+*Yakında eklenecek.*
 
 ## ✨ Öne Çıkan Özellikler
 
 - **🎨 Serbest Sürükle & Bırak (Free-Form):** Tam bir özgürlük! Kartlarınızı hiçbir ızgara kuralına bağlı kalmadan ekranın dilediğiniz köşesine yerleştirin.
 - **💎 Premium Cam Tasarımı:** Bulanık cam efektleri (frosted glass), akıcı mikro animasyonlar ve şık arka planlar.
 - **🌍 Çoklu Dil Desteği:** Türkçe, İngilizce, İspanyolca, Almanca, Fransızca ve daha birçok dil için anında çeviri.
+- **💾 Tam Yedekleme (İçe/Dışa Aktar):** Tüm kişisel kart yerleşimleriniz, notlarınız ve ayarlarınızı tek tıkla `.json` dosyası olarak bilgisayarınıza yedekleyin, dilediğiniz zaman geri yükleyin.
+- **🖋️ 16 Farklı Estetik Font (Motivasyon Kartı):** Ruh halinize göre değişen, içlerinde dünyanın en popüler el yazısı ve şık edebi fontlarının bulunduğu özel motivasyon modülü. (Dancing Script, Cormorant Garamond, Roboto, vb.)
 - **⚙️ 10+ Entegre Araç (Widget):**
   - 🔍 **Arama Motorları:** Google, Bing, DuckDuckGo, Yahoo veya Yandex üzerinden hızlıca arama yapın.
   - ⛅ **Canlı Hava Durumu:** Seçtiğiniz şehrin anlık hava durumunu doğrudan panelinizde görün.
@@ -38,6 +38,7 @@
   - 💱 **Döviz Kurları:** Güncel döviz kurlarını anlık olarak takip edin.
   - 🌐 **Dünya Saatleri:** Farklı ülkelerin yerel saatlerini anında kontrol edin.
   - 🔗 **Hızlı Linkler:** Favori web sitelerinizi ikonlarıyla birlikte panonuza iğneleyin.
+  - 📱 **QR Kod Oluşturucu:** İstediğiniz metin veya linki anında yüksek çözünürlüklü QR koda dönüştürün.
 
 ## 🚀 Kurulum (GitHub Release)
 
