@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuzluca Bar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="newtab.css">
+</head>
+<body>
+
+<canvas id="particles-canvas"></canvas>
+
+<!-- SVG Defs for gradients -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="pomo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b9d"/>
+      <stop offset="100%" stop-color="#ff9a6b"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- Top Bar -->
+<header class="topbar">
+  <div class="logo">
+    <span class="logo-star">✦</span>
+    <span class="logo-text">Tuzluca Bar</span>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn" id="edit-layout-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>
+      </svg>
+      <span id="edit-mode-label">Yerleşimi Düzenle</span>
+    </button>
+    <button class="topbar-btn" id="settings-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+      <span id="topbar-edit-label">Düzenle</span>
+    </button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <h1 class="greeting" id="greeting">Hoş geldiniz</h1>
+  <div class="hero-time">
+    <span class="current-time" id="current-time">00:00:00</span>
+    <span class="hero-sep">·</span>
+    <span class="current-date" id="current-date"></span>
+  </div>
+</section>
+
+<!-- Cards Grid -->
+<main id="cards-container" class="cards-container"></main>
+
+<!-- Settings Overlay -->
+<div id="settings-overlay" class="settings-overlay"></div>
+
+<!-- Settings Panel -->
+<aside id="settings-panel" class="settings-panel">
+  <div class="settings-header">
+    <h2 id="settings-title">Ayarlar</h2>
+    <button class="settings-close-btn" id="close-settings-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="settings-body">
+    <!-- Language -->
+    <div class="settings-section">
+      <h3 class="settings-section-label" id="settings-lang-label">Dil</h3>
+      <div class="language-grid" id="language-grid"></div>
+    </div>
+
+    <!-- Search Engine -->
+    <div class="settings-section">
+      <h3 class="settings-section-label" id="settings-engine-label">Arama Motoru</h3>
+      <div class="engine-grid" id="engine-grid"></div>
+    </div>
+
+    <!-- Weather City -->
+    <div class="settings-section">
+      <h3 class="settings-section-label" id="settings-weather-label">Hava Durumu Şehri</h3>
+      <div class="city-input-row">
+        <input type="text" id="city-input" class="settings-input" placeholder="Şehir giriniz...">
+        <button class="save-btn" id="save-city-btn">Kaydet</button>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="settings-section">
+      <h3 class="settings-section-label" id="settings-cards-label">Kartlar</h3>
+      <div class="cards-list" id="cards-list"></div>
+    </div>
+  </div>
+</aside>
+
+<script src="newtab.js"></script>
+</body>
+</html>
